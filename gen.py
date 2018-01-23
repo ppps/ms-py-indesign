@@ -53,8 +53,8 @@ def _format_page_date_for_weekend(edition_date):
     saturday = edition_date
     sunday = edition_date + timedelta(1)
     if saturday.year != sunday.year:
-        return (f'Saturday/Sunday December 31 {saturday.year}-'
-                f'January 1 {sunday.year}')
+        return ('Saturday/Sunday December 31-January 1 '
+                f'{saturday.year}-{sunday.year}')
     elif saturday.month != sunday.month:
         # Just %d for Saturday because it’s date is never less than 10
         return f'Saturday/Sunday {saturday:%B %d}-{sunday:%B %-d %Y}'

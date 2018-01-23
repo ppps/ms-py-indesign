@@ -40,7 +40,7 @@ def test_format_page_date_weekend():
         (datetime(2018, 1, 27), 'Saturday/Sunday January 27-28 2018'),
         (datetime(2018, 3, 31), 'Saturday/Sunday March 31-April 1 2018'),
         (datetime(2016, 12, 31),
-         'Saturday/Sunday December 31 2016-January 1 2017')
+         'Saturday/Sunday December 31-January 1 2016-2017')
         ]
     for case, expected in cases:
         assert gen.format_page_date(case) == expected
