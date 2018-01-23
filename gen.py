@@ -81,5 +81,10 @@ def format_page_date(edition_date, sat_spans_weekend=True):
     return edition_date.strftime('%A %B %-d %Y')
 
 
+def format_file_date(edition_date):
+    """Return a string DDMMYY for use in the filename"""
+    return edition_date.strftime('%d%m%y')
+
+
 if __name__ == '__main__':
     set_frame_contents('X', 'contents')

@@ -44,3 +44,13 @@ def test_format_page_date_weekend():
         ]
     for case, expected in cases:
         assert gen.format_page_date(case) == expected
+
+
+def test_file_date_formatting():
+    """format_file_date should return a six-digit DDMMYY string"""
+    cases = [
+        datetime(2018, 1, 27),
+        datetime(2018, 3, 31),
+        datetime(2016, 12, 31)]
+    for case in cases:
+        assert gen.format_file_date(case) == case.strftime('%d%m%y')
