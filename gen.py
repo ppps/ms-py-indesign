@@ -8,9 +8,23 @@ Usage:
 
 from datetime import datetime, timedelta
 import json
+import logging
+from pathlib import Path
 import subprocess
 
 from docopt import docopt
+
+logging.basicConfig(
+    format='%(asctime)s  %(levelname)-10s %(message)s',
+    datefmt='%Y-%m-%d %H:%M:%S',
+    level=logging.DEBUG)
+log = logging.getLogger(__name__)
+
+# SERVER_PAGES_DIR = Path('/Volumes/Server/Pages/')
+SERVER_PAGES_DIR = Path('/Users/robjwells/Desktop/Pages/')
+SERVER_MASTER = Path('/Volumes/Server/Production resources/Master pages/'
+                     'CS4 Master.indd')
+SERVER_MASTER = Path('/Users/robjwells/Desktop/CS4 Master.indd')
 
 
 def run_applescript(script_str):
@@ -18,9 +32,32 @@ def run_applescript(script_str):
     osa = subprocess.Popen(['osascript', '-'],
                            stdin=subprocess.PIPE,
                            stdout=subprocess.PIPE,
-                           stderr=subprocess.DEVNULL)
-    result = osa.communicate(script_str.encode('utf-8'))[0].decode('utf-8')
-    return result.rstrip()
+                           stderr=subprocess.PIPE)
+    result = osa.communicate(script_str.encode('utf-8'))
+
+    decoded = [stream.decode('utf-8').rstrip() for stream in result]
+    if any(decoded):
+        log.debug(decoded)
+
+    return decoded[0]
+
+
+def wrap_and_run(script):
+    """Wrap the InDesign script in appropriate tell blocks and run it
+
+    The script is wrapped in the boilerplate block for addressing
+    the active application in Adobe InDesign. This is to cut down
+    on repetition in this file.
+
+    The result of the AppleScript runner is returned
+    """
+    return run_applescript(f'''
+tell application "Adobe InDesign CS4"
+  tell the active document
+    {script}
+  end tell
+end tell
+''')
 
 
 def set_frame_contents(frame_name, text):
@@ -30,14 +67,9 @@ def set_frame_contents(frame_name, text):
 
     All frames with the same label have the contents set to `text`.
     """
-    script = f'''\
-tell application "Adobe InDesign CS4"
-  tell the front document
-    set the contents of text frame "{frame_name}" to "{text}"
-  end tell
-end tell
-'''
-    run_applescript(script)
+    wrap_and_run(
+        'set the contents of every text frame whose label is '
+        f'"{frame_name}" to "{text}"')
 
 
 def _format_page_date_for_weekend(edition_date):
@@ -60,7 +92,7 @@ def _format_page_date_for_weekend(edition_date):
         return ('Saturday/Sunday December 31-January 1 '
                 f'{saturday.year}-{sunday.year}')
     elif saturday.month != sunday.month:
-        # Just %d for Saturday because it’s date is never less than 10
+        # Just %d for Saturday because its date is never less than 10
         return f'Saturday/Sunday {saturday:%B %d}-{sunday:%B %-d %Y}'
     else:
         return f'Saturday/Sunday {saturday:%B %-d}-{sunday:%-d %Y}'
@@ -90,5 +122,117 @@ def format_file_date(edition_date):
     return edition_date.strftime('%d%m%y')
 
 
+def apply_master(master_name: str, spread: bool):
+    """Create a working page from the specified master page
+
+    If `spread` is True then a new spread is created in the document,
+    underneath the existing single page (so that the working pages
+    are 2 & 3 in the document.
+
+    This function applies the master page, then overrides items that
+    need to be set later.
+    """
+    if not spread:
+        apply_master_script = (
+            f'set applied master of page 1 to master spread "{master_name}"')
+    else:
+        apply_master_script = (
+            'make new spread with properties {applied master:master spread ' +
+            master_name + '}')
+    wrap_and_run(apply_master_script)
+
+
+def set_date_on_page(edition_date):
+    """Set the content of the current document’s `Edition date` frames
+
+    edition_date should be a datetime object (or something with strftime)
+    """
+    set_frame_contents('Edition date', format_page_date(edition_date))
+
+
+def set_spread_page_numbers(left_page_number):
+    """Set the page numbers on both halves of a spread"""
+    set_frame_contents('L-Page number', left_page_number)
+    set_frame_contents('R-Page number', left_page_number + 1)
+
+
+def set_single_page_number(page_number):
+    """Set the page numbers on a single page"""
+    set_frame_contents('Page number', page_number)
+
+
+def save_file(path):
+    """Save the active document to the provided path
+
+    path should be a pathlib.Path object (as the path
+    needs to be resolved, and .resolve() is called on it.)
+    """
+    path = path.resolve()
+    script = f'''\
+set locked of layer "Date and page number" to true
+set locked of layer "Furniture" to true
+set active layer to "Work"
+save to POSIX file "{path}"
+'''
+    wrap_and_run(script)
+
+
+def format_file_path(edition_date, page_number, slug,
+                     spread: bool, pages_directory=None):
+    """Work out where to save the new InDesign file"""
+    if not pages_directory:
+        pages_directory = SERVER_PAGES_DIR
+    edition_directory = pages_directory.joinpath(
+        edition_date.strftime('%Y-%m-%d %A %b %-d'))
+    edition_directory.mkdir(exist_ok=True)
+
+    if spread:
+        str_num = '-'.join([page_number, page_number + 1])
+    else:
+        str_num = str(page_number)
+
+    file_date = format_file_date(edition_date)
+
+    return edition_directory.joinpath(f'{str_num}_{slug}_{file_date}.indd')
+
+
+def open_master(master_file=None):
+    """Open the master InDesign file for page creation"""
+    if not master_file:
+        master_file = str(SERVER_MASTER)
+    script = f'''
+tell application "Adobe InDesign CS4"
+  open POSIX file "{master_file}"
+end tell
+'''
+    run_applescript(script)
+
+
+def close_active_document():
+    """Close and save the current active InDesign document"""
+    wrap_and_run('close saving yes')
+
+
+def create_from_master(master_name: str, spread: bool, slug,
+                       edition_date: datetime, page_number: int):
+    """Create a new working document from a master page"""
+    open_master(master_file=SERVER_MASTER)
+    apply_master(master_name, spread)
+    set_date_on_page(edition_date)
+    if spread:
+        set_spread_page_numbers(page_number)
+    else:
+        set_single_page_number(page_number)
+    save_location = format_file_path(edition_date, page_number, slug, spread,
+                                     pages_directory=SERVER_PAGES_DIR)
+    save_file(path=save_location)
+    close_active_document()
+
+
 if __name__ == '__main__':
-    set_frame_contents('X', 'contents')
+    create_from_master(
+        master_name='Feat-Letters-L',
+        spread=False,
+        slug='Letters',
+        edition_date=datetime.today(),
+        page_number=14)
