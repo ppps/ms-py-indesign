@@ -26,6 +26,12 @@ def run_applescript(script_str):
 
 
 def set_frame_contents(frame_name, text):
+    """Set the contents of text frames in the active InDesign document
+
+    frame_name corresponds to the script label of the frame in InDesign.
+
+    All frames with the same label have the contents set to `text`.
+    """
     script = f'''\
 tell application "Adobe InDesign {ID_VERSION}"
   tell the front document
