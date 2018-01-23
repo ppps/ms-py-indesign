@@ -12,8 +12,6 @@ import subprocess
 
 from docopt import docopt
 
-ID_VERSION = 'CS5.5'
-
 
 def run_applescript(script_str):
     """Encode and run the AppleScript in script_str"""
@@ -33,9 +31,9 @@ def set_frame_contents(frame_name, text):
     All frames with the same label have the contents set to `text`.
     """
     script = f'''\
-tell application "Adobe InDesign {ID_VERSION}"
+tell application "Adobe InDesign CS4"
   tell the front document
-    set the contents of every text frame whose label is "{frame_name}" to "{text}"
+    set the contents of text frame "{frame_name}" to "{text}"
   end tell
 end tell
 '''
