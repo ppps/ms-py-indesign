@@ -6,21 +6,21 @@ Usage:
     gen.py --desk=DESK --date=DATE
 """
 
-ID_VERSION = 'CS5.5'
-
 from datetime import datetime, timedelta
 import json
 import subprocess
 
 from docopt import docopt
 
+ID_VERSION = 'CS5.5'
+
 
 def run_applescript(script_str):
     """Encode and run the AppleScript in script_str"""
     osa = subprocess.Popen(['osascript', '-'],
-                       stdin=subprocess.PIPE,
-                       stdout=subprocess.PIPE,
-                       stderr=subprocess.DEVNULL)
+                           stdin=subprocess.PIPE,
+                           stdout=subprocess.PIPE,
+                           stderr=subprocess.DEVNULL)
     result = osa.communicate(script_str.encode('utf-8'))[0].decode('utf-8')
     return result.rstrip()
 

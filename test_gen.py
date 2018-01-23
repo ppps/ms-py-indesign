@@ -4,6 +4,7 @@ from datetime import datetime
 
 import gen
 
+
 def test_format_page_date():
     """Check date formatting with format_page_date
 
