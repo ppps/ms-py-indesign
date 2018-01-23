@@ -3,7 +3,7 @@
 InDesign Page Generator
 
 Usage:
-    gen.py --desk=DESK --date=DATE
+    gen.py --master=MASTER --pages_dir=DIR
 """
 
 from datetime import datetime, timedelta
@@ -19,6 +19,7 @@ logging.basicConfig(
     datefmt='%Y-%m-%d %H:%M:%S',
     level=logging.DEBUG)
 log = logging.getLogger(__name__)
+
 
 # SERVER_PAGES_DIR = Path('/Volumes/Server/Pages/')
 SERVER_PAGES_DIR = Path('/Users/robjwells/Desktop/Pages/')
@@ -178,11 +179,9 @@ save to POSIX file "{path}"
 
 
 def format_file_path(edition_date, page_number, slug,
-                     spread: bool, pages_directory=None):
+                     spread: bool, pages_root):
     """Work out where to save the new InDesign file"""
-    if not pages_directory:
-        pages_directory = SERVER_PAGES_DIR
-    edition_directory = pages_directory.joinpath(
+    edition_directory = pages_root.joinpath(
         edition_date.strftime('%Y-%m-%d %A %b %-d'))
     edition_directory.mkdir(exist_ok=True)
 
@@ -196,16 +195,13 @@ def format_file_path(edition_date, page_number, slug,
     return edition_directory.joinpath(f'{str_num}_{slug}_{file_date}.indd')
 
 
-def open_master(master_file=None):
+def open_master(master_file):
     """Open the master InDesign file for page creation"""
-    if not master_file:
-        master_file = str(SERVER_MASTER)
-    script = f'''
+    run_applescript(f'''
 tell application "Adobe InDesign CS4"
   open POSIX file "{master_file}"
 end tell
-'''
-    run_applescript(script)
+''')
 
 
 def close_active_document():
@@ -214,9 +210,10 @@ def close_active_document():
 
 
 def create_from_master(master_name: str, spread: bool, slug,
-                       edition_date: datetime, page_number: int):
+                       edition_date: datetime, page_number: int,
+                       master_file, pages_root):
     """Create a new working document from a master page"""
-    open_master(master_file=SERVER_MASTER)
+    open_master(master_file)
     apply_master(master_name, spread)
     set_date_on_page(edition_date)
     if spread:
@@ -224,15 +221,23 @@ def create_from_master(master_name: str, spread: bool, slug,
     else:
         set_single_page_number(page_number)
     save_location = format_file_path(edition_date, page_number, slug, spread,
-                                     pages_directory=SERVER_PAGES_DIR)
+                                     pages_root)
     save_file(path=save_location)
     close_active_document()
 
 
 if __name__ == '__main__':
+    args = docopt(__doc__)
+    log.info(args)
+
+    pages_root = Path(args['--pages_dir']).expanduser().resolve()
+    master_file = Path(args['--master']).expanduser().resolve()
+
     create_from_master(
         master_name='Feat-Letters-L',
         spread=False,
         slug='Letters',
         edition_date=datetime.today(),
-        page_number=14)
+        page_number=14,
+        master_file=master_file,
+        pages_root=pages_root)
