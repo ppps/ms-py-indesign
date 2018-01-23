@@ -1,0 +1,308 @@
+{
+  "News": {
+    "Front": [
+      {
+        "slug": "Front",
+        "master": "News-Front",
+        "page": 1,
+        "spread": false
+      }
+    ],
+    "Saturday front": [
+      {
+        "slug": "Front",
+        "master": "News-SatFront",
+        "page": 1,
+        "spread": false
+      }
+    ],
+    "Home": [
+      {
+        "slug": "Home",
+        "master": "News-Home-Split",
+        "page": 2,
+        "spread": true
+      },
+      {
+        "slug": "Home",
+        "master": "News-Home-Split",
+        "page": 4,
+        "spread": true
+      }
+    ],
+    "Foreign": [
+      {
+        "slug": "Foreign",
+        "master": "News-Foreign-Split",
+        "page": 6,
+        "spread": true
+      }
+    ],
+    "Weekday TV": [
+      {
+        "slug": "TV",
+        "master": "Feat-TV-L",
+        "page": 12,
+        "spread": false
+      }
+    ],
+    "Saturday TV (15)": [
+      {
+        "slug": "Features",
+        "master": "Feat-Blank-R",
+        "page": 15,
+        "spread": false
+      }
+    ],
+    "Letters (10)": [
+      {
+        "slug": "Letters",
+        "master": "Feat-Letters-L",
+        "page": 10,
+        "spread": false
+      }
+    ],
+    "Letters (14)": [
+      {
+        "slug": "Letters",
+        "master": "Feat-Letters-L",
+        "page": 14,
+        "spread": false
+      }
+    ],
+    "Letters (Saturday)": [
+      {
+        "slug": "Letters",
+        "master": "Feat-Letters-Split",
+        "page": 18,
+        "spread": true
+      }
+    ],
+    "Struggle": [
+      {
+        "slug": "Struggle",
+        "master": "Feat-Struggle-L",
+        "page": 8,
+        "spread": false
+      }
+    ],
+    "Struggle split": [
+      {
+        "slug": "Struggle",
+        "master": "Feat-Struggle-Split",
+        "page": 8,
+        "spread": true
+      }
+    ],
+    "Red List": [
+      {
+        "slug": "RedList",
+        "master": "Feat-RedList",
+        "page": 20,
+        "spread": false
+      }
+    ]
+  },
+  "Features": {
+    "9": [
+      {
+        "slug": "Features",
+        "master": "Feat-Blank-R",
+        "page": 9,
+        "spread": false
+      }
+    ],
+    "10": [
+      {
+        "slug": "Features",
+        "master": "Feat-Blank-L",
+        "page": 10,
+        "spread": false
+      }
+    ],
+    "13": [
+      {
+        "slug": "Features",
+        "master": "Feat-TV-R",
+        "page": 13,
+        "spread": false
+      }
+    ],
+    "15": [
+      {
+        "slug": "Features",
+        "master": "Feat-Blank-R",
+        "page": 15,
+        "spread": false
+      }
+    ],
+    "Spread (12-13)": [
+      {
+        "slug": "Features",
+        "master": "Feat-Spread",
+        "page": 12,
+        "spread": true
+      }
+    ],
+    "Spread (8-9)": [
+      {
+        "slug": "Features",
+        "master": "Feat-Spread",
+        "page": 8,
+        "spread": true
+      }
+    ],
+    "10-11 — split": [
+      {
+        "slug": "Features",
+        "master": "Feat-Blank-Split",
+        "page": 10,
+        "spread": true
+      }
+    ],
+    "10-11 — singles": [
+      {
+        "slug": "Features",
+        "master": "Feat-Blank-L",
+        "page": 10,
+        "spread": false
+      },
+      {
+        "slug": "Features",
+        "master": "Feat-Blank-R",
+        "page": 11,
+        "spread": false
+      }
+    ]
+  },
+  "Culture": {
+    "16-17 (weekend)": [
+      {
+        "slug": "16-17_Ents-Arts",
+        "master": "Arts-Ents-Split",
+        "page": 16,
+        "spread": true
+      }
+    ],
+    "Arts (p11)": [
+      {
+        "slug": "Arts",
+        "master": "Arts-Blank-R",
+        "page": 11,
+        "spread": false
+      }
+    ],
+    "Arts split (10-11)": [
+      {
+        "slug": "Arts",
+        "master": "Arts-Blank-Split",
+        "page": 10,
+        "spread": true
+      }
+    ]
+  },
+  "Sport": {
+    "Two pages": [
+      {
+        "slug": "Back",
+        "master": "Sprt-Back",
+        "page": 16,
+        "spread": false
+      },
+      {
+        "slug": "Sport",
+        "master": "Sprt-Blank-R",
+        "page": 15,
+        "spread": false
+      }
+    ],
+    "Three pages": [
+      {
+        "slug": "Back",
+        "master": "Sprt-Back",
+        "page": 16,
+        "spread": false
+      },
+      {
+        "slug": "Sport",
+        "master": "Sprt-Blank-R",
+        "page": 15,
+        "spread": false
+      },
+      {
+        "slug": "Sport",
+        "master": "Sprt-Blank-L",
+        "page": 14,
+        "spread": false
+      }
+    ],
+    "Three pages with split": [
+      {
+        "slug": "Back",
+        "master": "Sprt-Back",
+        "page": 16,
+        "spread": false
+      },
+      {
+        "slug": "Sport",
+        "master": "Sprt-Blank-Split",
+        "page": 14,
+        "spread": true
+      }
+    ],
+    "Four pages": [
+      {
+        "slug": "Back",
+        "master": "Sprt-Back",
+        "page": 24,
+        "spread": false
+      },
+      {
+        "slug": "Sport",
+        "master": "Sprt-Blank-R",
+        "page": 23,
+        "spread": false
+      },
+      {
+        "slug": "Sport",
+        "master": "Sprt-Blank-L",
+        "page": 22,
+        "spread": false
+      },
+      {
+        "slug": "Racing",
+        "master": "Sprt-Racing-R",
+        "page": 21,
+        "spread": false
+      }
+    ],
+    "Four pages with split": [
+      {
+        "slug": "Back",
+        "master": "Sprt-Back",
+        "page": 24,
+        "spread": false
+      },
+      {
+        "slug": "Sport",
+        "master": "Sprt-Blank-Split",
+        "page": 22,
+        "spread": true
+      },
+      {
+        "slug": "Racing",
+        "master": "Sprt-Racing-R",
+        "page": 21,
+        "spread": false
+      }
+    ],
+    "Racing only": [
+      {
+        "slug": "Racing",
+        "master": "Sprt-Racing-R",
+        "page": 21,
+        "spread": false
+      }
+    ]
+  }
+}
