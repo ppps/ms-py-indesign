@@ -9,8 +9,14 @@ def test_format_page_date():
     """Check date formatting with format_page_date
 
     It should return a format matching:
-        %A %B %-d %Y
+        %A\n%B %-d %Y
     For weekdays and Sundays.
+
+    That is, the weekday name in full on one line, and the month,
+    date and year on the following line:
+
+    Wednesday
+    January 1 1930
 
     Saturdays are tested separately.
     """
@@ -19,7 +25,7 @@ def test_format_page_date():
         datetime(2017, 11, 6),
         datetime(2016, 9, 25)]
     for case in cases:
-        assert gen.format_page_date(case) == case.strftime('%A %B %-d %Y')
+        assert gen.format_page_date(case) == case.strftime('%A\n%B %-d %Y')
 
 
 def test_format_page_date_weekend():
@@ -29,19 +35,22 @@ def test_format_page_date_weekend():
     in the string.
 
     The simplest case is just two day names and two dates:
-        Saturday/Sunday January 27-28 2018
+        Saturday/Sunday
+        January 27-28 2018
 
     But it should also handle month boundaries:
-        Saturday/Sunday March 31-April 1 2018
+        Saturday/Sunday
+        March 31-April 1 2018
 
     And year boundaries:
-        Saturday/Sunday December 31 2016-January 1 2017
+        Saturday/Sunday
+        December 31 2016-January 1 2017
     """
     cases = [
-        (datetime(2018, 1, 27), 'Saturday/Sunday January 27-28 2018'),
-        (datetime(2018, 3, 31), 'Saturday/Sunday March 31-April 1 2018'),
+        (datetime(2018, 1, 27), 'Saturday/Sunday\nJanuary 27-28 2018'),
+        (datetime(2018, 3, 31), 'Saturday/Sunday\nMarch 31-April 1 2018'),
         (datetime(2016, 12, 31),
-         'Saturday/Sunday December 31-January 1 2016-2017')
+         'Saturday/Sunday\nDecember 31-January 1 2016-2017')
         ]
     for case, expected in cases:
         assert gen.format_page_date(case) == expected

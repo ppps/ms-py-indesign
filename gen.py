@@ -94,32 +94,34 @@ def _format_page_date_for_weekend(edition_date):
     saturday = edition_date
     sunday = edition_date + timedelta(1)
     if saturday.year != sunday.year:
-        return ('Saturday/Sunday December 31-January 1 '
-                f'{saturday.year}-{sunday.year}')
+        return ('Saturday/Sunday\n'
+                f'December 31-January 1 {saturday.year}-{sunday.year}')
     elif saturday.month != sunday.month:
         # Just %d for Saturday because its date is never less than 10
-        return f'Saturday/Sunday {saturday:%B %d}-{sunday:%B %-d %Y}'
+        return f'Saturday/Sunday\n{saturday:%B %d}-{sunday:%B %-d %Y}'
     else:
-        return f'Saturday/Sunday {saturday:%B %-d}-{sunday:%-d %Y}'
+        return f'Saturday/Sunday\n{saturday:%B %-d}-{sunday:%-d %Y}'
 
 
 def format_page_date(edition_date, sat_spans_weekend=True):
     """Return a string to represent the date on the page
 
     The format used is:
-        Tuesday January 23 2018
+        Tuesday
+        January 23 2018
     Or:
-        %A %B %-d %Y
+        %A\n%B %-d %Y
 
     If sat_spans_weekend, Saturday dates return a joint Sat/Sun string:
-        Saturday/Sunday January 27-28 2018
+        Saturday/Sunday
+        January 27-28 2018
 
     This also handles month and year boundaries. (A separate
     format_weekend_date function is used to deal with the complexity.)
     """
     if sat_spans_weekend and edition_date.isoweekday() == 6:
         return _format_page_date_for_weekend(edition_date)
-    return edition_date.strftime('%A %B %-d %Y')
+    return edition_date.strftime('%A\n%B %-d %Y')
 
 
 def format_file_date(edition_date):
