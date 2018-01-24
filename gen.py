@@ -23,15 +23,12 @@ logging.basicConfig(
 log = logging.getLogger(__name__)
 
 
-# SERVER_PAGES_DIR = Path('/Volumes/Server/Pages/')
-SERVER_PAGES_DIR = Path('/Users/robjwells/Desktop/Pages/')
-SERVER_MASTER = Path('/Volumes/Server/Production resources/Master pages/'
-                     'CS4 Master.indd')
-SERVER_MASTER = Path('/Users/robjwells/Desktop/CS4 Master.indd')
-
-
 def run_applescript(script_str):
-    """Encode and run the AppleScript in script_str"""
+    """Encode and run the AppleScript in script_str
+
+    An AppleScript execution error will cause the program to
+    quit immediately. This is logged as a fatal error.
+    """
     osa = subprocess.Popen(['osascript', '-'],
                            stdin=subprocess.PIPE,
                            stdout=subprocess.PIPE,
@@ -39,10 +36,15 @@ def run_applescript(script_str):
     result = osa.communicate(script_str.encode('utf-8'))
 
     decoded = [stream.decode('utf-8').rstrip() for stream in result]
+    stdout, stderr = decoded
     if any(decoded):
-        log.debug(decoded)
+        log.debug('AppleScript output: %s', decoded)
+    if 'execution error' in stderr:
+        # Program cannot continue running as it is in an unknown state
+        log.critical('AppleScript: ' + stderr.split('execution error: ')[-1])
+        sys.exit()
 
-    return decoded[0] if decoded[0] else decoded[1]
+    return stdout if stdout else stderr
 
 
 def wrap_and_run(script):
