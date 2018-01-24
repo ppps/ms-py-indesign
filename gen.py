@@ -12,6 +12,7 @@ import json
 import logging
 from pathlib import Path
 import subprocess
+import sys
 
 from docopt import docopt
 
@@ -41,7 +42,7 @@ def run_applescript(script_str):
     if any(decoded):
         log.debug(decoded)
 
-    return decoded[0]
+    return decoded[0] if decoded[0] else decoded[1]
 
 
 def wrap_and_run(script):
@@ -271,9 +272,45 @@ def wrap_seq_for_applescript(seq):
 
 
 def prompt_for_list_selection(sequence):
-    """Wrap the items of sequence and ask the user to choose from them"""
-    return run_applescript(
+    """Wrap the items of sequence and ask the user to choose from them
+
+    If the user chooses cancel this function will exist the program
+    using sys.exit
+    """
+    result = run_applescript(
         f'choose from list {wrap_seq_for_applescript(sequence)}')
+    if result == 'false':
+        log.debug('User cancelled list selection')
+        sys.exit()
+    return result
+
+
+def prompt_for_text_input(message, default=''):
+    """Prompt the user to input text, or confirm the default
+
+    If the user cancels the dialog this function will exit the program
+    using sys.exit
+    """
+    result = run_applescript(
+        f'display dialog "{message}" default answer "{default}"')
+    if 'execution error: User canceled. (-128)' in result:
+        log.debug('User cancelled text input')
+        sys.exit()
+    return result.split('text returned:')[-1]
+
+
+def prompt_for_date(offset=1):
+    """Prompt the user to enter the date and return a datetime object
+
+    By default the date shown is tomorrow's date (with an offset of one
+    day, controlled by the offset parameter).
+    """
+    tomorrow_iso = (datetime.today() + timedelta(1)).strftime('%Y-%m-%d')
+    date_string = prompt_for_text_input(
+        'Enter the date in ISO format (YYYY-MM-DD).\n' +
+        'The default is tomorrow',
+        default=tomorrow_iso)
+    return datetime.strptime(date_string, '%Y-%m-%d')
 
 
 if __name__ == '__main__':
@@ -288,6 +325,9 @@ if __name__ == '__main__':
     pages = construct_page_specifications(pages, masters)
 
     desk = prompt_for_list_selection(pages)
+    date = prompt_for_date()
+
+    print(date)
 
 #     create_from_master(
 #         master_name='Feat-Letters-L',
