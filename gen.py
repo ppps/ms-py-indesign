@@ -6,6 +6,7 @@ Usage:
     gen.py --master=MASTER --pages_dir=DIR
 """
 
+import copy
 from datetime import datetime, timedelta
 import json
 import logging
@@ -240,6 +241,27 @@ def load_generators_json(pages_file='pages.json'):
     return pages
 
 
+def construct_page_specifications(pages_dict, masters_dict):
+    """Construct dict by adding details from masters to page instructions
+
+    The pages dict only contains the name of the master to use and the
+    page number, which is not enough to generate the page. This function
+    fills in the needed details from the masters dict.
+
+    This allows the file containing the page-generating instructions
+    to be kept reasonably clear, allowing for easier editing, and
+    removes repetition.
+    """
+    detailed_dict = copy.deepcopy(pages_dict)
+    for desk in detailed_dict:
+        for page_list in detailed_dict[desk].values():
+            for page in page_list:
+                master = masters[page['master']]
+                page['slug'] = master['slug']
+                page['spread'] = master['spread']
+    return detailed_dict
+
+
 if __name__ == '__main__':
     args = docopt(__doc__)
     log.debug(args)
@@ -247,8 +269,9 @@ if __name__ == '__main__':
     pages_root = Path(args['--pages_dir']).expanduser().resolve()
     master_file = Path(args['--master']).expanduser().resolve()
 
-#     print(load_masters_json())
-#     print(load_generators_json())
+    masters = load_masters_json()
+    pages = load_generators_json()
+    pages = construct_page_specifications(pages, masters)
 
 #     create_from_master(
 #         master_name='Feat-Letters-L',
