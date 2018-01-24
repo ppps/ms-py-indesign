@@ -11,8 +11,11 @@ from datetime import datetime, timedelta
 import json
 import logging
 from pathlib import Path
+import re
 import subprocess
 import sys
+
+APP_DIR = Path(__file__).parent
 
 from docopt import docopt
 
@@ -248,14 +251,14 @@ def create_from_master(master_name: str, spread: bool, slug,
 
 def load_masters_json(masters_file='masters.json'):
     """Load a JSON file containing the specification for the master pages"""
-    with open(masters_file) as json_file:
+    with open(APP_DIR.joinpath(masters_file)) as json_file:
         masters = json.load(json_file)
     return masters
 
 
 def load_generators_json(pages_file='pages.json'):
     """Load a JSON file showing the page sets available to be generated"""
-    with open(pages_file) as json_file:
+    with open(APP_DIR.joinpath(pages_file)) as json_file:
         pages = json.load(json_file)
     return pages
 
@@ -297,9 +300,11 @@ def prompt_for_list_selection(sequence, multiple_selections=False):
     If the user chooses cancel this function will exist the program
     using sys.exit
     """
-    script = f'choose from list {wrap_seq_for_applescript(sequence)}'
-    if multiple_selections:
-        script += ' with multiple selections allowed'
+    script = f'''\
+tell application "System Events"
+  choose from list {wrap_seq_for_applescript(sequence)}{' with multiple selections allowed' if multiple_selections else ''}
+end tell
+'''
     result = run_applescript(script)
     if result == 'false':
         log.debug('User cancelled list selection')
@@ -316,8 +321,11 @@ def prompt_for_text_input(message, default=''):
     If the user cancels the dialog this function will exit the program
     using sys.exit
     """
-    result = run_applescript(
-        f'display dialog "{message}" default answer "{default}"')
+    result = run_applescript(f'''\
+tell application "System Events"
+  display dialog "{message}" default answer "{default}"
+end tell
+''')
     if 'execution error: User canceled. (-128)' in result:
         log.debug('User cancelled text input')
         sys.exit()
@@ -331,16 +339,19 @@ def prompt_for_date(offset=1):
     day, controlled by the offset parameter).
     """
     tomorrow_iso = (datetime.today() + timedelta(1)).strftime('%Y-%m-%d')
-    date_string = prompt_for_text_input(
+    result = prompt_for_text_input(
         'Enter the date in ISO format (YYYY-MM-DD).\n' +
         'The default is tomorrow',
         default=tomorrow_iso)
-    return datetime.strptime(date_string, '%Y-%m-%d')
+    date_match = re.search(r'(\d{4}-\d{2}-\d{2})', result)
+    if not date_match:
+        log.critical('Could not find acceptable date')
+        sys.exit()
+    return datetime.strptime(date_match.group(1), '%Y-%m-%d')
 
 
 if __name__ == '__main__':
     args = docopt(__doc__)
-    log.debug(args)
 
     pages_root = Path(args['--pages_dir']).expanduser().resolve()
     master_file = Path(args['--master']).expanduser().resolve()
