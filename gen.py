@@ -142,8 +142,8 @@ def apply_master(master_name: str, spread: bool):
             f'set applied master of page 1 to master spread "{master_name}"')
     else:
         apply_master_script = (
-            'make new spread with properties {applied master:master spread ' +
-            master_name + '}')
+            'make new spread with properties {applied master:master spread "' +
+            master_name + '"}')
     wrap_and_run(apply_master_script)
 
 
@@ -190,7 +190,7 @@ def format_file_path(edition_date, page_number, slug,
     edition_directory.mkdir(exist_ok=True)
 
     if spread:
-        str_num = '-'.join([page_number, page_number + 1])
+        str_num = '-'.join(map(str, [page_number, page_number + 1]))
     else:
         str_num = str(page_number)
 
