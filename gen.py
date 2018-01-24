@@ -262,6 +262,20 @@ def construct_page_specifications(pages_dict, masters_dict):
     return detailed_dict
 
 
+def wrap_seq_for_applescript(seq):
+    """Wrap a Python sequence in braces and quotes for use in AppleScript"""
+    quoted = [f'"{item}"' for item in seq]
+    joined = ', '.join(quoted)
+    wrapped = '{' + joined + '}'
+    return wrapped
+
+
+def prompt_for_list_selection(sequence):
+    """Wrap the items of sequence and ask the user to choose from them"""
+    return run_applescript(
+        f'choose from list {wrap_seq_for_applescript(sequence)}')
+
+
 if __name__ == '__main__':
     args = docopt(__doc__)
     log.debug(args)
@@ -272,6 +286,8 @@ if __name__ == '__main__':
     masters = load_masters_json()
     pages = load_generators_json()
     pages = construct_page_specifications(pages, masters)
+
+    desk = prompt_for_list_selection(pages)
 
 #     create_from_master(
 #         master_name='Feat-Letters-L',
