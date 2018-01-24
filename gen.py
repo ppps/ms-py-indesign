@@ -72,9 +72,9 @@ def set_frame_contents(frame_name, text):
 
     All frames with the same label have the contents set to `text`.
     """
-    wrap_and_run(
-        'set the contents of every text frame whose label is '
-        f'"{frame_name}" to "{text}"')
+    script = ('set the contents of every text frame whose label is '
+              f'"{frame_name}" to "{text}"')
+    wrap_and_run(script)
 
 
 def _format_page_date_for_weekend(edition_date):
