@@ -2,306 +2,226 @@
   "News": {
     "Front": [
       {
-        "slug": "Front",
         "master": "News-Front",
-        "page": 1,
-        "spread": false
+        "page": 1
       }
     ],
     "Saturday front": [
       {
-        "slug": "Front",
         "master": "News-SatFront",
-        "page": 1,
-        "spread": false
+        "page": 1
       }
     ],
     "Home": [
       {
-        "slug": "Home",
         "master": "News-Home-Split",
-        "page": 2,
-        "spread": true
+        "page": 2
       },
       {
-        "slug": "Home",
         "master": "News-Home-Split",
-        "page": 4,
-        "spread": true
+        "page": 4
       }
     ],
     "Foreign": [
       {
-        "slug": "Foreign",
         "master": "News-Foreign-Split",
-        "page": 6,
-        "spread": true
+        "page": 6
       }
     ],
     "Weekday TV": [
       {
-        "slug": "TV",
         "master": "Feat-TV-L",
-        "page": 12,
-        "spread": false
+        "page": 12
       }
     ],
     "Saturday TV (15)": [
       {
-        "slug": "Features",
         "master": "Feat-Blank-R",
-        "page": 15,
-        "spread": false
+        "page": 15
       }
     ],
     "Letters (10)": [
       {
-        "slug": "Letters",
         "master": "Feat-Letters-L",
-        "page": 10,
-        "spread": false
+        "page": 10
       }
     ],
     "Letters (14)": [
       {
-        "slug": "Letters",
         "master": "Feat-Letters-L",
-        "page": 14,
-        "spread": false
+        "page": 14
       }
     ],
     "Letters (Saturday)": [
       {
-        "slug": "Letters",
         "master": "Feat-Letters-Split",
-        "page": 18,
-        "spread": true
+        "page": 18
       }
     ],
     "Struggle": [
       {
-        "slug": "Struggle",
         "master": "Feat-Struggle-L",
-        "page": 8,
-        "spread": false
+        "page": 8
       }
     ],
     "Struggle split": [
       {
-        "slug": "Struggle",
         "master": "Feat-Struggle-Split",
-        "page": 8,
-        "spread": true
+        "page": 8
       }
     ],
     "Red List": [
       {
-        "slug": "RedList",
         "master": "Feat-RedList",
-        "page": 20,
-        "spread": false
+        "page": 20
       }
     ]
   },
   "Features": {
     "9": [
       {
-        "slug": "Features",
         "master": "Feat-Blank-R",
-        "page": 9,
-        "spread": false
+        "page": 9
       }
     ],
     "10": [
       {
-        "slug": "Features",
         "master": "Feat-Blank-L",
-        "page": 10,
-        "spread": false
+        "page": 10
       }
     ],
     "13": [
       {
-        "slug": "Features",
         "master": "Feat-TV-R",
-        "page": 13,
-        "spread": false
+        "page": 13
       }
     ],
     "15": [
       {
-        "slug": "Features",
         "master": "Feat-Blank-R",
-        "page": 15,
-        "spread": false
+        "page": 15
       }
     ],
     "Spread (12-13)": [
       {
-        "slug": "Features",
         "master": "Feat-Spread",
-        "page": 12,
-        "spread": true
+        "page": 12
       }
     ],
     "Spread (8-9)": [
       {
-        "slug": "Features",
         "master": "Feat-Spread",
-        "page": 8,
-        "spread": true
+        "page": 8
       }
     ],
     "10-11 — split": [
       {
-        "slug": "Features",
         "master": "Feat-Blank-Split",
-        "page": 10,
-        "spread": true
+        "page": 10
       }
     ],
     "10-11 — singles": [
       {
-        "slug": "Features",
         "master": "Feat-Blank-L",
-        "page": 10,
-        "spread": false
+        "page": 10
       },
       {
-        "slug": "Features",
         "master": "Feat-Blank-R",
-        "page": 11,
-        "spread": false
+        "page": 11
       }
     ]
   },
   "Culture": {
     "16-17 (weekend)": [
       {
-        "slug": "16-17_Ents-Arts",
         "master": "Arts-Ents-Split",
-        "page": 16,
-        "spread": true
+        "page": 16
       }
     ],
     "Arts (p11)": [
       {
-        "slug": "Arts",
         "master": "Arts-Blank-R",
-        "page": 11,
-        "spread": false
+        "page": 11
       }
     ],
     "Arts split (10-11)": [
       {
-        "slug": "Arts",
         "master": "Arts-Blank-Split",
-        "page": 10,
-        "spread": true
+        "page": 10
       }
     ]
   },
   "Sport": {
     "Two pages": [
       {
-        "slug": "Back",
         "master": "Sprt-Back",
-        "page": 16,
-        "spread": false
+        "page": 16
       },
       {
-        "slug": "Sport",
         "master": "Sprt-Blank-R",
-        "page": 15,
-        "spread": false
+        "page": 15
       }
     ],
     "Three pages": [
       {
-        "slug": "Back",
         "master": "Sprt-Back",
-        "page": 16,
-        "spread": false
+        "page": 16
       },
       {
-        "slug": "Sport",
         "master": "Sprt-Blank-R",
-        "page": 15,
-        "spread": false
+        "page": 15
       },
       {
-        "slug": "Sport",
         "master": "Sprt-Blank-L",
-        "page": 14,
-        "spread": false
+        "page": 14
       }
     ],
     "Three pages with split": [
       {
-        "slug": "Back",
         "master": "Sprt-Back",
-        "page": 16,
-        "spread": false
+        "page": 16
       },
       {
-        "slug": "Sport",
         "master": "Sprt-Blank-Split",
-        "page": 14,
-        "spread": true
+        "page": 14
       }
     ],
     "Four pages": [
       {
-        "slug": "Back",
         "master": "Sprt-Back",
-        "page": 24,
-        "spread": false
+        "page": 24
       },
       {
-        "slug": "Sport",
         "master": "Sprt-Blank-R",
-        "page": 23,
-        "spread": false
+        "page": 23
       },
       {
-        "slug": "Sport",
         "master": "Sprt-Blank-L",
-        "page": 22,
-        "spread": false
+        "page": 22
       },
       {
-        "slug": "Racing",
         "master": "Sprt-Racing-R",
-        "page": 21,
-        "spread": false
+        "page": 21
       }
     ],
     "Four pages with split": [
       {
-        "slug": "Back",
         "master": "Sprt-Back",
-        "page": 24,
-        "spread": false
+        "page": 24
       },
       {
-        "slug": "Sport",
         "master": "Sprt-Blank-Split",
-        "page": 22,
-        "spread": true
+        "page": 22
       },
       {
-        "slug": "Racing",
         "master": "Sprt-Racing-R",
-        "page": 21,
-        "spread": false
+        "page": 21
       }
     ],
     "Racing only": [
       {
-        "slug": "Racing",
         "master": "Sprt-Racing-R",
-        "page": 21,
-        "spread": false
+        "page": 21
       }
     ]
   }
