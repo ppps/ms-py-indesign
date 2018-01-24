@@ -226,18 +226,35 @@ def create_from_master(master_name: str, spread: bool, slug,
     close_active_document()
 
 
+def load_masters_json(masters_file='masters.json'):
+    """Load a JSON file containing the specification for the master pages"""
+    with open(masters_file) as json_file:
+        masters = json.load(json_file)
+    return masters
+
+
+def load_generators_json(pages_file='pages.json'):
+    """Load a JSON file showing the page sets available to be generated"""
+    with open(pages_file) as json_file:
+        pages = json.load(json_file)
+    return pages
+
+
 if __name__ == '__main__':
     args = docopt(__doc__)
-    log.info(args)
+    log.debug(args)
 
     pages_root = Path(args['--pages_dir']).expanduser().resolve()
     master_file = Path(args['--master']).expanduser().resolve()
 
-    create_from_master(
-        master_name='Feat-Letters-L',
-        spread=False,
-        slug='Letters',
-        edition_date=datetime.today(),
-        page_number=14,
-        master_file=master_file,
-        pages_root=pages_root)
+#     print(load_masters_json())
+#     print(load_generators_json())
+
+#     create_from_master(
+#         master_name='Feat-Letters-L',
+#         spread=False,
+#         slug='Letters',
+#         edition_date=datetime.today(),
+#         page_number=14,
+#         master_file=master_file,
+#         pages_root=pages_root)
