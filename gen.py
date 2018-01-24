@@ -26,6 +26,17 @@ logging.basicConfig(
 log = logging.getLogger(__name__)
 
 
+def remove_zero_padded_dates(date_string):
+    """Mimic %-d on unsupported platforms by trimming zero-padding
+
+    For example:
+        January 01 2018
+    Becomes:
+        January 1 2018
+    """
+    return re.sub(r' 0(\d)', r' \1', date_string)
+
+
 def run_applescript(script_str):
     """Encode and run the AppleScript in script_str
 
@@ -100,10 +111,10 @@ def _format_page_date_for_weekend(edition_date):
         return ('Saturday/Sunday\n'
                 f'December 31-January 1 {saturday.year}-{sunday.year}')
     elif saturday.month != sunday.month:
-        # Just %d for Saturday because its date is never less than 10
-        return f'Saturday/Sunday\n{saturday:%B %d}-{sunday:%B %-d %Y}'
+        date = f'Saturday/Sunday\n{saturday:%B %d}-{sunday:%B %d %Y}'
     else:
-        return f'Saturday/Sunday\n{saturday:%B %-d}-{sunday:%-d %Y}'
+        date = f'Saturday/Sunday\n{saturday:%B %d}-{sunday:%d %Y}'
+    return remove_zero_padded_dates(date)
 
 
 def format_page_date(edition_date, sat_spans_weekend=True):
@@ -124,7 +135,8 @@ def format_page_date(edition_date, sat_spans_weekend=True):
     """
     if sat_spans_weekend and edition_date.isoweekday() == 6:
         return _format_page_date_for_weekend(edition_date)
-    return edition_date.strftime('%A\n%B %-d %Y')
+    date = edition_date.strftime('%A\n%B %d %Y')
+    return remove_zero_padded_dates(date)
 
 
 def format_file_date(edition_date):
@@ -190,8 +202,9 @@ save to POSIX file "{path}"
 def format_file_path(edition_date, page_number, slug,
                      spread: bool, pages_root):
     """Work out where to save the new InDesign file"""
-    edition_directory = pages_root.joinpath(
-        edition_date.strftime('%Y-%m-%d %A %b %-d'))
+    date_string = edition_date.strftime('%Y-%m-%d %A %b %d')
+    date_string = remove_zero_padded_dates(date_string)
+    edition_directory = pages_root.joinpath(date_string)
     edition_directory.mkdir(exist_ok=True)
 
     if spread:
