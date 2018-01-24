@@ -191,7 +191,6 @@ def save_file(path):
     """
     path = path.resolve()
     script = f'''\
-set locked of layer "Date and page number" to true
 set locked of layer "Furniture" to true
 set active layer to "Work"
 save to POSIX file "{path}"
@@ -205,7 +204,7 @@ def format_file_path(edition_date, page_number, slug,
     date_string = edition_date.strftime('%Y-%m-%d %A %b %d')
     date_string = remove_zero_padded_dates(date_string)
     edition_directory = pages_root.joinpath(date_string)
-    edition_directory.mkdir(exist_ok=True)
+    edition_directory.mkdir(parents=True, exist_ok=True)
 
     if spread:
         str_num = '-'.join(map(str, [page_number, page_number + 1]))
