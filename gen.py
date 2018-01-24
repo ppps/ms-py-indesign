@@ -271,18 +271,25 @@ def wrap_seq_for_applescript(seq):
     return wrapped
 
 
-def prompt_for_list_selection(sequence):
+def prompt_for_list_selection(sequence, multiple_selections=False):
     """Wrap the items of sequence and ask the user to choose from them
+
+    This always returns a list, even for a single selection.
 
     If the user chooses cancel this function will exist the program
     using sys.exit
     """
-    result = run_applescript(
-        f'choose from list {wrap_seq_for_applescript(sequence)}')
+    script = f'choose from list {wrap_seq_for_applescript(sequence)}'
+    if multiple_selections:
+        script += ' with multiple selections allowed'
+    result = run_applescript(script)
     if result == 'false':
         log.debug('User cancelled list selection')
         sys.exit()
-    return result
+    if multiple_selections:
+        return result.split(', ')
+    else:
+        return [result]
 
 
 def prompt_for_text_input(message, default=''):
@@ -324,10 +331,8 @@ if __name__ == '__main__':
     pages = load_generators_json()
     pages = construct_page_specifications(pages, masters)
 
-    desk = prompt_for_list_selection(pages)
+    desk = prompt_for_list_selection(pages)[0]
     date = prompt_for_date()
-
-    print(date)
 
 #     create_from_master(
 #         master_name='Feat-Letters-L',
