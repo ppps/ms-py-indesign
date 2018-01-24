@@ -215,6 +215,19 @@ def close_active_document():
     wrap_and_run('close saving yes')
 
 
+def override_master_items(master_name, spread=False):
+    """Override items from the work layer on the master"""
+    script = 'try\n'
+    page_nums = [2, 3] if spread else [1]
+    for num in page_nums:
+        script += (
+            f'override (every item of master page items of page {num}'
+            'whose item layer\'s name is "Work") destination page '
+            f'page {num}\n')
+    script += 'end try'
+    return wrap_and_run(script)
+
+
 def create_from_master(master_name: str, spread: bool, slug,
                        edition_date: datetime, page_number: int,
                        master_file, pages_root):
@@ -226,6 +239,7 @@ def create_from_master(master_name: str, spread: bool, slug,
         set_spread_page_numbers(page_number)
     else:
         set_single_page_number(page_number)
+    override_master_items(master_name, spread=spread)
     save_location = format_file_path(edition_date, page_number, slug, spread,
                                      pages_root)
     save_file(path=save_location)
