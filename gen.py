@@ -334,11 +334,16 @@ if __name__ == '__main__':
     desk = prompt_for_list_selection(pages)[0]
     date = prompt_for_date()
 
-#     create_from_master(
-#         master_name='Feat-Letters-L',
-#         spread=False,
-#         slug='Letters',
-#         edition_date=datetime.today(),
-#         page_number=14,
-#         master_file=master_file,
-#         pages_root=pages_root)
+    to_generate = prompt_for_list_selection(pages[desk],
+                                            multiple_selections=True)
+
+    for page_set_name in to_generate:
+        for page in pages[desk][page_set_name]:
+            create_from_master(
+                master_name=page['master'],
+                spread=page['spread'],
+                slug=page['slug'],
+                page_number=page['page'],
+                edition_date=date,
+                master_file=master_file,
+                pages_root=pages_root)
