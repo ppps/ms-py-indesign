@@ -1,0 +1,22 @@
+{
+  "Simon": {
+    "Blank left": [
+      {
+        "master": "A-FolioBase-L",
+        "page": 2
+      }
+    ],
+    "Blank right": [
+      {
+        "master": "A-FolioBase-R",
+        "page": 1
+      }
+    ],
+    "Blank spread": [
+      {
+        "master": "A-FolioBase-S",
+        "page": 2
+      }
+    ]
+  }
+}

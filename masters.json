@@ -1,0 +1,14 @@
+{
+  "A-FolioBase-L": {
+    "slug": "Blank",
+    "spread": false
+  },
+  "A-FolioBase-R": {
+    "slug": "Blank",
+    "spread": false
+  },
+  "A-FolioBase-S": {
+    "slug": "Blank",
+    "spread": true
+  }
+}
