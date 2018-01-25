@@ -34,13 +34,13 @@
         "page": 10
       }
     ],
-    "Sat Ents & TV (14-15)": [
+    "Saturday Ents/TV/Feature (14-15)": [
       {
         "master": "Cult-Ents-L",
         "page": 14
       },
       {
-        "master": "Feat-Base-R",
+        "master": "Feat-SatTV-R",
         "page": 15
       }
     ],
@@ -124,7 +124,7 @@
         "page": 14
       },
       {
-        "master": "Feat-Base-R",
+        "master": "Feat-SatTV-R",
         "page": 15
       }
     ]
