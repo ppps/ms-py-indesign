@@ -87,6 +87,10 @@
     "slug": "FeaturesTV",
     "spread": false
   },
+  "Feat-Struggle-L": {
+    "slug": "Struggle",
+    "spread": false
+  },
   "Sprt-Base-L": {
     "slug": "Sport",
     "spread": false
