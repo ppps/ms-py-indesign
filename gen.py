@@ -311,7 +311,16 @@ def prompt_for_list_selection(sequence, multiple_selections=False):
 
     If the user chooses cancel this function will exist the program
     using sys.exit
+
+    Raises ValueError if multiple_selections is True and any of the
+    items of sequence contain ', ' — as this is what AppleScript uses
+    to separate multiple (unquoted) values in the string returned.
     """
+    if (multiple_selections
+            and any(', ' in str(s) for s in sequence)):
+        raise ValueError(
+            '", " is disallowed in sequence items when multiple'
+            ' selection is enabled.')
     script = f'''\
 tell application "System Events"
   choose from list {wrap_seq_for_applescript(sequence)}{' with multiple selections allowed' if multiple_selections else ''}
@@ -322,6 +331,7 @@ end tell
         log.debug('User cancelled list selection')
         sys.exit()
     if multiple_selections:
+        # Split the multiple values returned from AppleScript
         return result.split(', ')
     else:
         return [result]
@@ -375,8 +385,12 @@ if __name__ == '__main__':
     desk = prompt_for_list_selection(pages)[0]
     date = prompt_for_date()
 
-    to_generate = prompt_for_list_selection(pages[desk],
-                                            multiple_selections=True)
+    try:
+        to_generate = prompt_for_list_selection(
+            pages[desk], multiple_selections=True)
+    except ValueError:
+        log.critical('Malformed page set name. Cannot continue.')
+        sys.exit()
 
     for page_set_name in to_generate:
         for page in pages[desk][page_set_name]:
