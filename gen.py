@@ -15,9 +15,9 @@ import re
 import subprocess
 import sys
 
-APP_DIR = Path(__file__).parent
-
 from docopt import docopt
+
+APP_DIR = Path(__file__).parent
 
 logging.basicConfig(
     format='%(asctime)s  %(levelname)-10s %(message)s',
@@ -323,7 +323,9 @@ def prompt_for_list_selection(sequence, multiple_selections=False):
             ' selection is enabled.')
     script = f'''\
 tell application "Adobe InDesign CS4"
-  choose from list {wrap_seq_for_applescript(sequence)}{' with multiple selections allowed' if multiple_selections else ''}
+  choose from list {wrap_seq_for_applescript(sequence)}{
+    ' with multiple selections allowed'
+    if multiple_selections else ''}
 end tell
 '''
     result = run_applescript(script)
