@@ -8,11 +8,11 @@
     ],
     "Home": [
       {
-        "master": "News-Home-S",
+        "master": "News-Base-S",
         "page": 2
       },
       {
-        "master": "News-Home-S",
+        "master": "News-Base-S",
         "page": 4
       }
     ],
