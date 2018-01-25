@@ -1,4 +1,8 @@
 {
+  "A-Blank": {
+    "slug": "Blank",
+    "spread": true
+  },
   "A-FolioBase-L": {
     "slug": "Blank",
     "spread": false
@@ -10,5 +14,105 @@
   "A-FolioBase-S": {
     "slug": "Blank",
     "spread": true
+  },
+  "News-Base-L": {
+    "slug": "News",
+    "spread": false
+  },
+  "News-Base-R": {
+    "slug": "News",
+    "spread": false
+  },
+  "News-Base-S": {
+    "slug": "News",
+    "spread": true
+  },
+  "News-Home-L": {
+    "slug": "Home",
+    "spread": false
+  },
+  "News-Home-R": {
+    "slug": "Home",
+    "spread": false
+  },
+  "News-Home-S": {
+    "slug": "Home",
+    "spread": true
+  },
+  "News-World-L": {
+    "slug": "Foreign",
+    "spread": false
+  },
+  "News-World-R": {
+    "slug": "Foreign",
+    "spread": false
+  },
+  "News-World-S": {
+    "slug": "Foreign",
+    "spread": true
+  },
+  "News-Front": {
+    "slug": "Front",
+    "spread": false
+  },
+  "Feat-Base-L": {
+    "slug": "Features",
+    "spread": false
+  },
+  "Feat-Base-R": {
+    "slug": "Features",
+    "spread": false
+  },
+  "Feat-Base-S": {
+    "slug": "Features",
+    "spread": true
+  },
+  "Feat-Letters-L": {
+    "slug": "Letters",
+    "spread": false
+  },
+  "Feat-Letters-R": {
+    "slug": "Letters",
+    "spread": false
+  },
+  "Feat-Letters-S": {
+    "slug": "Letters",
+    "spread": true
+  },
+  "Feat-RedList-L": {
+    "slug": "RedList",
+    "spread": false
+  },
+  "Sprt-Base-L": {
+    "slug": "Sport",
+    "spread": false
+  },
+  "Sprt-Base-R": {
+    "slug": "Sport",
+    "spread": false
+  },
+  "Sprt-Base-S": {
+    "slug": "Sport",
+    "spread": true
+  },
+  "Sprt-Back": {
+    "slug": "Back",
+    "spread": false
+  },
+  "Cult-Base-L": {
+    "slug": "Culture",
+    "spread": false
+  },
+  "Cult-Base-R": {
+    "slug": "Culture",
+    "spread": false
+  },
+  "Cult-Base-S": {
+    "slug": "Culture",
+    "spread": true
+  },
+  "Cult-Ents-L": {
+    "slug": "Ents",
+    "spread": false
   }
 }

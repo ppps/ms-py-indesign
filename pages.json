@@ -1,5 +1,217 @@
 {
-  "Simon": {
+  "News": {
+    "Front": [
+      {
+        "master": "News-Front",
+        "page": 1
+      }
+    ],
+    "Home": [
+      {
+        "master": "News-Home-S",
+        "page": 2
+      },
+      {
+        "master": "News-Home-S",
+        "page": 4
+      }
+    ],
+    "Foreign": [
+      {
+        "master": "News-World-S",
+        "page": 6
+      }
+    ],
+    "TV (12, Weekdays)": [
+      {
+        "master": "Cult-Ents-L",
+        "page": 12
+      }
+    ],
+    "TV (10, Thursday)": [
+      {
+        "master": "Cult-Ents-L",
+        "page": 12
+      }
+    ],
+    "Sat Ents & TV (14-15)": [
+      {
+        "master": "Cult-Ents-L",
+        "page": 14
+      },
+      {
+        "master": "Feat-Base-R",
+        "page": 15
+      }
+    ],
+    "Letters (13, Monday)": [
+      {
+        "master": "Feat-Letters-L",
+        "page": 10
+      }
+    ],
+    "Letters (14, Tuesday-Friday)": [
+      {
+        "master": "Feat-Letters-L",
+        "page": 10
+      }
+    ],
+    "Letters (18-19, Saturday)": [
+      {
+        "master": "Feat-Letters-S",
+        "page": 18
+      }
+    ],
+    "Struggle (8)": [
+      {
+        "master": "Feat-Base-L",
+        "page": 8
+      }
+    ],
+    "Struggle (8-9, split)": [
+      {
+        "master": "Feat-Base-S",
+        "page": 8
+      }
+    ],
+    "Red List": [
+      {
+        "master": "Feat-RedList-L",
+        "page": 20
+      }
+    ]
+  },
+  "Features": {
+    "8-9 (split)": [
+      {
+        "master": "Feat-Base-S",
+        "page": 8
+      }
+    ],
+    "9": [
+      {
+        "master": "Feat-Base-R",
+        "page": 9
+      }
+    ],
+    "10": [
+      {
+        "master": "Feat-Base-L",
+        "page": 10
+      }
+    ],
+    "11": [
+      {
+        "master": "Feat-Base-L",
+        "page": 11
+      }
+    ],
+    "10-11 (split)": [
+      {
+        "master": "Feat-Base-S",
+        "page": 10
+      }
+    ],
+    "12-13 (split)": [
+      {
+        "master": "Feat-Base-S",
+        "page": 12
+      }
+    ],
+    "Saturday Ents/TV/Feature (14-15)": [
+      {
+        "master": "Cult-Ents-L",
+        "page": 14
+      },
+      {
+        "master": "Feat-Base-R",
+        "page": 15
+      }
+    ]
+  },
+  "Culture": {
+    "11": [
+      {
+        "master": "Cult-Base-R",
+        "page": 11
+      }
+    ],
+    "12-13 (split)": [
+      {
+        "master": "Cult-Base-S",
+        "page": 12
+      }
+    ],
+    "13": [
+      {
+        "master": "Cult-Base-R",
+        "page": 13
+      }
+    ],
+    "16-17": [
+      {
+        "master": "Cult-Base-S",
+        "page": 16
+      }
+    ]
+  },
+  "Sport": {
+    "Back (16, Weekday)": [
+      {
+        "master": "Sprt-Back",
+        "page": 16
+      }
+    ],
+    "Back (24, Saturday)": [
+      {
+        "master": "Sprt-Back",
+        "page": 24
+      }
+    ],
+    "14": [
+      {
+        "master": "Sprt-Base-L",
+        "page": 14
+      }
+    ],
+    "15": [
+      {
+        "master": "Sprt-Base-R",
+        "page": 15
+      }
+    ],
+    "14-15 (split)": [
+      {
+        "master": "Sprt-Base-S",
+        "page": 14
+      }
+    ],
+    "21": [
+      {
+        "master": "Sprt-Base-R",
+        "page": 21
+      }
+    ],
+    "22": [
+      {
+        "master": "Sprt-Base-L",
+        "page": 22
+      }
+    ],
+    "23": [
+      {
+        "master": "Sprt-Base-R",
+        "page": 23
+      }
+    ],
+    "22-23 (split)": [
+      {
+        "master": "Sprt-Base-S",
+        "page": 22
+      }
+    ]
+  },
+  "Blanks": {
     "Blank left": [
       {
         "master": "A-FolioBase-L",
