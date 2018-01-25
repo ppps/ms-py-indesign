@@ -34,7 +34,7 @@ def remove_zero_padded_dates(date_string):
     Becomes:
         January 1 2018
     """
-    return re.sub(r' 0(\d)', r' \1', date_string)
+    return re.sub(r' (?:0(\d-))?0(\d)', r' \1\2', date_string)
 
 
 def run_applescript(script_str):
