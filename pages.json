@@ -22,13 +22,13 @@
         "page": 6
       }
     ],
-    "TV (12, Weekdays)": [
+    "TV (12: Weekdays)": [
       {
         "master": "Cult-Ents-L",
         "page": 12
       }
     ],
-    "TV (10, Thursday)": [
+    "TV (10: Thursday)": [
       {
         "master": "Cult-Ents-L",
         "page": 12
@@ -44,19 +44,19 @@
         "page": 15
       }
     ],
-    "Letters (13, Monday)": [
+    "Letters (13: Monday)": [
       {
         "master": "Feat-Letters-L",
         "page": 10
       }
     ],
-    "Letters (14, Tuesday-Friday)": [
+    "Letters (14: Tuesday-Friday)": [
       {
         "master": "Feat-Letters-L",
         "page": 10
       }
     ],
-    "Letters (18-19, Saturday)": [
+    "Letters (18-19: Saturday)": [
       {
         "master": "Feat-Letters-S",
         "page": 18
@@ -68,7 +68,7 @@
         "page": 8
       }
     ],
-    "Struggle (8-9, split)": [
+    "Struggle (8-9: split)": [
       {
         "master": "Feat-Base-S",
         "page": 8
@@ -156,13 +156,13 @@
     ]
   },
   "Sport": {
-    "Back (16, Weekday)": [
+    "Back (16: Weekday)": [
       {
         "master": "Sprt-Back",
         "page": 16
       }
     ],
-    "Back (24, Saturday)": [
+    "Back (24: Saturday)": [
       {
         "master": "Sprt-Back",
         "page": 24
