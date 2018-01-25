@@ -322,7 +322,7 @@ def prompt_for_list_selection(sequence, multiple_selections=False):
             '", " is disallowed in sequence items when multiple'
             ' selection is enabled.')
     script = f'''\
-tell application "System Events"
+tell application "Adobe InDesign CS4"
   choose from list {wrap_seq_for_applescript(sequence)}{' with multiple selections allowed' if multiple_selections else ''}
 end tell
 '''
@@ -344,7 +344,7 @@ def prompt_for_text_input(message, default=''):
     using sys.exit
     """
     result = run_applescript(f'''\
-tell application "System Events"
+tell application "Adobe InDesign CS4"
   display dialog "{message}" default answer "{default}"
 end tell
 ''')
