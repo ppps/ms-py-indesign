@@ -311,7 +311,7 @@ def construct_page_specifications(pages_dict, masters_dict):
     for desk in detailed_dict:
         for page_list in detailed_dict[desk].values():
             for page in page_list:
-                master = masters[page['master']]
+                master = masters_dict[page['master']]
                 page['slug'] = master['slug']
                 page['spread'] = master['spread']
     return detailed_dict
@@ -395,7 +395,7 @@ def prompt_for_date(offset=1):
     return datetime.strptime(date_match.group(1), '%Y-%m-%d')
 
 
-if __name__ == '__main__':
+def main():
     args = docopt(__doc__)
 
     pages_root = Path(args['--pages_dir']).expanduser().resolve()
@@ -427,3 +427,12 @@ if __name__ == '__main__':
                 edition_date=date,
                 master_file=master_file,
                 pages_root=pages_root)
+
+
+if __name__ == '__main__':
+    try:
+        main()
+    except Exception as e:
+        log.critical('Encountered exception while executing main function.',
+                     exc_info=e)
+        sys.exit(1)
