@@ -246,10 +246,27 @@ def override_master_items(master_name, spread=False):
     return wrap_and_run(script)
 
 
+def set_indesign_alerts_status(*, enabled: bool):
+    """Enable or disable InDesign alerts and dialogs
+
+    Modal dialogs (eg missing fonts, broken or modified links) can
+    prevent the execution of AppleScript and should be disabled
+    when running generation commands.
+    """
+    if enabled:
+        interaction_level = 'interact with all'
+    else:
+        interaction_level = 'never interact'
+    run_applescript(
+        'tell application "Adobe InDesign CS4" to set user interaction level'
+        f' of script preferences to {interaction_level}')
+
+
 def create_from_master(master_name: str, spread: bool, slug,
                        edition_date: datetime, page_number: int,
                        master_file, pages_root):
     """Create a new working document from a master page"""
+    set_indesign_alerts_status(enabled=False)
     open_master(master_file)
     apply_master(master_name, spread)
     set_date_on_page(edition_date)
@@ -262,6 +279,7 @@ def create_from_master(master_name: str, spread: bool, slug,
                                      pages_root)
     save_file(path=save_location)
     close_active_document()
+    set_indesign_alerts_status(enabled=True)
 
 
 def load_masters_json(masters_file='masters.json'):
