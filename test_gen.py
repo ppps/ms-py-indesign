@@ -48,6 +48,7 @@ def test_format_page_date_weekend():
     """
     cases = [
         (datetime(2018, 2, 3), 'Saturday/Sunday\nFebruary 3-4 2018'),
+        (datetime(2018, 6, 9), 'Saturday/Sunday\nJune 9-10 2018'),
         (datetime(2018, 1, 27), 'Saturday/Sunday\nJanuary 27-28 2018'),
         (datetime(2018, 3, 31), 'Saturday/Sunday\nMarch 31-April 1 2018'),
         (datetime(2016, 12, 31),
