@@ -307,7 +307,7 @@ def wrap_seq_for_applescript(seq):
     return wrapped
 
 
-def prompt_for_list_selection(sequence, multiple_selections=False):
+def prompt_for_list_selection(sequence, prompt, multiple_selections=False):
     """Wrap the items of sequence and ask the user to choose from them
 
     This always returns a list, even for a single selection.
@@ -326,7 +326,7 @@ def prompt_for_list_selection(sequence, multiple_selections=False):
             ' selection is enabled.')
     script = f'''\
 tell application "Adobe InDesign CS4"
-  choose from list {wrap_seq_for_applescript(sequence)}{
+  choose from list {wrap_seq_for_applescript(sequence)} with prompt {prompt}{
     ' with multiple selections allowed'
     if multiple_selections else ''}
 end tell
@@ -387,12 +387,14 @@ if __name__ == '__main__':
     pages = load_generators_json()
     pages = construct_page_specifications(pages, masters)
 
-    desk = prompt_for_list_selection(pages)[0]
+    desk = prompt_for_list_selection(pages, prompt='Choose a desk')[0]
     date = prompt_for_date()
 
     try:
         to_generate = prompt_for_list_selection(
-            pages[desk], multiple_selections=True)
+            pages[desk],
+            prompt='Choose pages to generate. Select multiple with ⌘.',
+            multiple_selections=True)
     except ValueError:
         log.critical('Malformed page set name. Cannot continue.')
         sys.exit()
