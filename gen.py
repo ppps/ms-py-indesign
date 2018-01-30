@@ -204,10 +204,7 @@ save to POSIX file "{path}"
 def format_file_path(edition_date, page_number, slug,
                      spread: bool, pages_root):
     """Work out where to save the new InDesign file"""
-    date_string = edition_date.strftime('%Y-%m-%d %A %b %d')
-    date_string = remove_zero_padded_dates(date_string)
-    edition_directory = pages_root.joinpath(date_string)
-    edition_directory.mkdir(parents=True, exist_ok=True)
+    pages_root.mkdir(parents=True, exist_ok=True)
 
     if spread:
         str_num = '-'.join(map(str, [page_number, page_number + 1]))
@@ -216,7 +213,7 @@ def format_file_path(edition_date, page_number, slug,
 
     file_date = format_file_date(edition_date)
 
-    return edition_directory.joinpath(f'{str_num}_{slug}_{file_date}.indd')
+    return pages_root.joinpath(f'{str_num}_{slug}_{file_date}.indd')
 
 
 def open_master(master_file):
