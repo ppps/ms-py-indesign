@@ -344,7 +344,7 @@ def prompt_for_list_selection(sequence, prompt, multiple_selections=False):
             ' selection is enabled.')
     script = f'''\
 tell application "Adobe InDesign CS4"
-  choose from list {wrap_seq_for_applescript(sequence)} with prompt {prompt}{
+  choose from list {wrap_seq_for_applescript(sequence)} with prompt "{prompt}"{
     ' with multiple selections allowed'
     if multiple_selections else ''}
 end tell
