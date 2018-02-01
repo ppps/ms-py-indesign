@@ -167,16 +167,9 @@ def apply_master(master_name: str, spread: bool):
     wrap_and_run(apply_master_script)
 
 
-def set_date_on_page(edition_date):
-    """Set the content of the current document’s `Edition date` frames
-
-    edition_date should be a datetime object (or something with strftime)
-    """
-    formatted_date = format_page_date(edition_date)
-    if edition_date.isoweekday() == 6:
-        # Saturday’s date is in a single-line frame
-        formatted_date = formatted_date.replace('\n', ' ')
-    set_frame_contents('Edition date', formatted_date)
+def set_date_on_page(date_string):
+    """Set the content of the current document’s `Edition date` frames"""
+    set_frame_contents('Edition date', date_string)
 
 
 def set_price(edition_date):
@@ -282,13 +275,18 @@ def create_from_master(master_name: str, spread: bool, slug,
     set_indesign_alerts_status(enabled=False)
     open_master(master_file)
     apply_master(master_name, spread)
-    set_date_on_page(edition_date)
+
+    page_date = format_page_date(edition_date)
+    if 'Front' in master_name:
+        page_date = page_date.replace('\n', ' ')
+        set_price(edition_date)
+    set_date_on_page(page_date)
+
     if spread:
         set_spread_page_numbers(page_number)
     else:
         set_single_page_number(page_number)
-    if 'Front' in master_name:
-        set_price(edition_date)
+
     override_master_items(master_name, spread=spread)
     save_location = format_file_path(edition_date, page_number, slug, spread,
                                      pages_root)
