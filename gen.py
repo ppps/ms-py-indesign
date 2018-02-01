@@ -172,7 +172,23 @@ def set_date_on_page(edition_date):
 
     edition_date should be a datetime object (or something with strftime)
     """
-    set_frame_contents('Edition date', format_page_date(edition_date))
+    formatted_date = format_page_date(edition_date)
+    if edition_date.isoweekday() == 6:
+        # Saturday’s date is in a single-line frame
+        formatted_date = formatted_date.replace('\n', ' ')
+    set_frame_contents('Edition date', formatted_date)
+
+
+def set_price(edition_date):
+    """Set the price on the front page
+
+    Weekday and weekend editions have a different price
+    """
+    weekday_price = '£1'
+    weekend_price = '£1.50'
+    is_saturday = edition_date.isoweekday() == 6
+    price = weekend_price if is_saturday else weekday_price
+    set_frame_contents('Price', price)
 
 
 def set_spread_page_numbers(left_page_number):
@@ -271,6 +287,8 @@ def create_from_master(master_name: str, spread: bool, slug,
         set_spread_page_numbers(page_number)
     else:
         set_single_page_number(page_number)
+    if 'Front' in master_name:
+        set_price(edition_date)
     override_master_items(master_name, spread=spread)
     save_location = format_file_path(edition_date, page_number, slug, spread,
                                      pages_root)
