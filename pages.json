@@ -22,13 +22,13 @@
         "page": 6
       }
     ],
-    "TV (12: Weekdays)": [
+    "TV (12: Mon, Tue, Thu, Fri)": [
       {
         "master": "Cult-Ents-L",
         "page": 12
       }
     ],
-    "TV (10: Thursday)": [
+    "TV (10: Wednesday)": [
       {
         "master": "Cult-Ents-L",
         "page": 10
@@ -130,19 +130,19 @@
     ]
   },
   "Culture": {
-    "11": [
+    "11 (Mon)": [
       {
         "master": "Cult-Base-R",
         "page": 11
       }
     ],
-    "12-13 (split)": [
+    "12-13 (split, Weds)": [
       {
         "master": "Cult-Base-S",
         "page": 12
       }
     ],
-    "13": [
+    "13 (Tue, Thu, Fri)": [
       {
         "master": "Cult-Base-R",
         "page": 13
@@ -225,6 +225,224 @@
       }
     ],
     "Blank spread": [
+      {
+        "master": "A-FolioBase-S",
+        "page": 2
+      }
+    ]
+  },
+  "Specials": {
+    "2018-03-08 Women’s Day": [
+      {
+        "master": "News-Front",
+        "page": 1
+      },
+      {
+        "master": "News-Base-S",
+        "page": 2
+      },
+      {
+        "master": "A-FolioBase-L",
+        "page": 4
+      },
+      {
+        "master": "News-Base-R",
+        "page": 5
+      },
+      {
+        "master": "A-FolioBase-L",
+        "page": 6
+      },
+      {
+        "master": "News-Base-R",
+        "page": 7
+      },
+      {
+        "master": "News-World-S",
+        "page": 8
+      },
+      {
+        "master": "Cult-Ents-L",
+        "page": 24
+      },
+      {
+        "master": "Feat-Letters-L",
+        "page": 26
+      },
+      {
+        "master": "Sprt-Base-R",
+        "page": 27
+      },
+      {
+        "master": "Sprt-Back",
+        "page": 28
+      }
+    ],
+    "2018-05-05 Marx 200 supplement": [
+      {
+        "master": "Feat-Base-R",
+        "page": 1
+      },
+      {
+        "master": "Feat-Base-S",
+        "page": 2
+      },
+      {
+        "master": "Feat-Base-S",
+        "page": 4
+      },
+      {
+        "master": "Feat-Base-S",
+        "page": 6
+      },
+      {
+        "master": "Feat-Base-S",
+        "page": 8
+      },
+      {
+        "master": "Feat-Base-S",
+        "page": 10
+      },
+      {
+        "master": "Feat-Base-L",
+        "page": 12
+      }
+    ],
+    "2018-05-05 Marx 200 main": [
+      {
+        "master": "News-Front",
+        "page": 1
+      },
+      {
+        "master": "News-Base-S",
+        "page": 2
+      },
+      {
+        "master": "News-Base-S",
+        "page": 4
+      },
+      {
+        "master": "News-World-S",
+        "page": 6
+      },
+      {
+        "master": "Feat-Base-S",
+        "page": 8
+      },
+      {
+        "master": "Feat-Base-S",
+        "page": 10
+      },
+      {
+        "master": "Cult-Ents-L",
+        "page": 12
+      },
+      {
+        "master": "Feat-SatTV-R",
+        "page": 13
+      },
+      {
+        "master": "Feat-Letters-S",
+        "page": 14
+      },
+      {
+        "master": "Feat-RedList-L",
+        "page": 16
+      },
+      {
+        "master": "Sprt-Base-R",
+        "page": 17
+      },
+      {
+        "master": "Sprt-Base-S",
+        "page": 18
+      },
+      {
+        "master": "Sprt-Back",
+        "page": 20
+      }
+    ],
+    "2018-05-12 TUC New Deal": [
+      {
+        "master": "News-Front",
+        "page": 1
+      },
+      {
+        "master": "News-Base-S",
+        "page": 2
+      },
+      {
+        "master": "A-Blank",
+        "page": 4
+      },
+      {
+        "master": "News-Base-R",
+        "page": 5
+      },
+      {
+        "master": "A-Blank",
+        "page": 6
+      },
+      {
+        "master": "News-Base-R",
+        "page": 7
+      },
+      {
+        "master": "News-World-S",
+        "page": 8
+      },
+      {
+        "master": "Feat-Base-S",
+        "page": 10
+      },
+      {
+        "master": "A-Blank",
+        "page": 12
+      },
+      {
+        "master": "Feat-Base-R",
+        "page": 13
+      },
+      {
+        "master": "Feat-Base-S",
+        "page": 14
+      },
+      {
+        "master": "Feat-Base-S",
+        "page": 16
+      },
+      {
+        "master": "Cult-Ents-L",
+        "page": 18
+      },
+      {
+        "master": "Feat-SatTV-R",
+        "page": 19
+      },
+      {
+        "master": "Cult-Base-S",
+        "page": 20
+      },
+      {
+        "master": "Feat-Letters-S",
+        "page": 22
+      },
+      {
+        "master": "Feat-RedList-L",
+        "page": 24
+      },
+      {
+        "master": "Sprt-Base-S",
+        "page": 26
+      },
+      {
+        "master": "Sprt-Back",
+        "page": 28
+      },
+      {
+        "master": "A-FolioBase-S",
+        "page": 0
+      },
       {
         "master": "A-FolioBase-S",
         "page": 2

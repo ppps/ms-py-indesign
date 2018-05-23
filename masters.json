@@ -27,18 +27,6 @@
     "slug": "News",
     "spread": true
   },
-  "News-Home-L": {
-    "slug": "Home",
-    "spread": false
-  },
-  "News-Home-R": {
-    "slug": "Home",
-    "spread": false
-  },
-  "News-Home-S": {
-    "slug": "Home",
-    "spread": true
-  },
   "News-World-L": {
     "slug": "Foreign",
     "spread": false
