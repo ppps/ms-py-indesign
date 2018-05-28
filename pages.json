@@ -22,7 +22,7 @@
         "page": 6
       }
     ],
-    "TV (12: Mon, Tue, Thu, Fri)": [
+    "TV (12: Mon Tue Thu Fri)": [
       {
         "master": "Cult-Ents-L",
         "page": 12
@@ -142,7 +142,7 @@
         "page": 12
       }
     ],
-    "13 (Tue, Thu, Fri)": [
+    "13 (Tue Thu Fri)": [
       {
         "master": "Cult-Base-R",
         "page": 13
