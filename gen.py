@@ -426,8 +426,8 @@ def main():
             pages[desk],
             prompt='Choose pages to generate. Select multiple with ⌘.',
             multiple_selections=True)
-    except ValueError:
-        log.critical('Malformed page set name. Cannot continue.')
+    except ValueError as exc:
+        log.critical('Malformed page set name. Cannot continue.', exc_info=exc)
         sys.exit()
 
     for page_set_name in to_generate:
