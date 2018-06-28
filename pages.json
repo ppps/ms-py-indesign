@@ -552,7 +552,7 @@
         "page": 8
       }
     ],
-    "2018-06-30: OurNHS70 march main paper": [
+    "2018-06-30 OurNHS70 march main paper": [
       {
         "master": "News-Front",
         "page": 1
@@ -564,6 +564,10 @@
       {
         "master": "A-Blank",
         "page": 4
+      },
+      {
+        "master": "News-Base-R",
+        "page": 5
       },
       {
         "master": "News-World-S",
