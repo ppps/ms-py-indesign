@@ -447,6 +447,80 @@
         "master": "A-FolioBase-S",
         "page": 2
       }
+    ],
+    "2018-06-30: OurNHS70 march main paper": [
+      {
+        "master": "News-Front",
+        "page": 1
+      },
+      {
+        "master": "News-Base-S",
+        "page": 2
+      },
+      {
+        "master": "A-Blank",
+        "page": 4
+      },
+      {
+        "master": "News-World-S",
+        "page": 6
+      },
+      {
+        "master": "A-Blank",
+        "page": 8
+      },
+      {
+        "master": "Feat-Base-R",
+        "page": 9
+      },
+      {
+        "master": "Feat-Base-S",
+        "page": 10
+      },
+      {
+        "master": "Feat-Base-S",
+        "page": 12
+      },
+      {
+        "master": "Feat-Base-S",
+        "page": 14
+      },
+      {
+        "master": "Feat-Base-S",
+        "page": 16
+      },
+      {
+        "master": "Cult-Ents-L",
+        "page": 18
+      },
+      {
+        "master": "Feat-SatTV-R",
+        "page": 19
+      },
+      {
+        "master": "Cult-Base-S",
+        "page": 20
+      },
+      {
+        "master": "Feat-Letters-S",
+        "page": 22
+      },
+      {
+        "master": "Feat-RedList-L",
+        "page": 24
+      },
+      {
+        "master": "A-Blank",
+        "page": 25
+      },
+      {
+        "master": "Sprt-Base-S",
+        "page": 26
+      },
+      {
+        "master": "Sprt-Back",
+        "page": 28
+      }
     ]
   }
 }
