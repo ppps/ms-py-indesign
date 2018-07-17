@@ -232,7 +232,7 @@
     ]
   },
   "Specials": {
-    "2018-03-08 Women’s Day": [
+    "2018-03-08 Women\u2019s Day": [
       {
         "master": "News-Front",
         "page": 1
@@ -552,6 +552,44 @@
         "page": 8
       }
     ],
+    "2018-07-21 Country Standard": [
+      {
+        "master": "Feat-Base-R",
+        "page": 1
+      },
+      {
+        "master": "Feat-Base-S",
+        "page": 2
+      },
+      {
+        "master": "Feat-Base-S",
+        "page": 4
+      },
+      {
+        "master": "Feat-Base-S",
+        "page": 6
+      },
+      {
+        "master": "Feat-Base-S",
+        "page": 8
+      },
+      {
+        "master": "Feat-Base-S",
+        "page": 10
+      },
+      {
+        "master": "Feat-Base-S",
+        "page": 12
+      },
+      {
+        "master": "Feat-Base-S",
+        "page": 14
+      },
+      {
+        "master": "Feat-Base-L",
+        "page": 16
+      }
+    ],
     "2018-06-30 OurNHS70 march main paper": [
       {
         "master": "News-Front",
@@ -628,6 +666,150 @@
       {
         "master": "Sprt-Back",
         "page": 28
+      }
+    ],
+    "2018-07-14 Durham Miners": [
+      {
+        "master": "News-Front",
+        "page": 1
+      },
+      {
+        "master": "News-Base-S",
+        "page": 2
+      },
+      {
+        "master": "A-Blank",
+        "page": 4
+      },
+      {
+        "master": "News-Base-R",
+        "page": 5
+      },
+      {
+        "master": "A-Blank",
+        "page": 6
+      },
+      {
+        "master": "News-Base-R",
+        "page": 7
+      },
+      {
+        "master": "News-World-S",
+        "page": 8
+      },
+      {
+        "master": "A-Blank",
+        "page": 10
+      },
+      {
+        "master": "Feat-Base-S",
+        "page": 12
+      },
+      {
+        "master": "Feat-Base-S",
+        "page": 14
+      },
+      {
+        "master": "Feat-Base-S",
+        "page": 16
+      },
+      {
+        "master": "Feat-Base-S",
+        "page": 18
+      },
+      {
+        "master": "Cult-Base-S",
+        "page": 20
+      },
+      {
+        "master": "Feat-Base-S",
+        "page": 22
+      },
+      {
+        "master": "Feat-Base-L",
+        "page": 24
+      },
+      {
+        "master": "A-Blank",
+        "page": 26
+      },
+      {
+        "master": "Cult-Ents-L",
+        "page": 28
+      },
+      {
+        "master": "A-Blank",
+        "page": 29
+      },
+      {
+        "master": "Feat-Letters-S",
+        "page": 30
+      },
+      {
+        "master": "Feat-RedList-L",
+        "page": 32
+      },
+      {
+        "master": "Sprt-Base-R",
+        "page": 33
+      },
+      {
+        "master": "Sprt-Base-S",
+        "page": 34
+      },
+      {
+        "master": "Sprt-Back",
+        "page": 36
+      }
+    ],
+    "2018-07-18 Custom edition test": [
+      {
+        "master": "News-Front",
+        "page": 1
+      },
+      {
+        "master": "News-Base-S",
+        "page": 2
+      },
+      {
+        "master": "News-Base-S",
+        "page": 4
+      },
+      {
+        "master": "News-World-L",
+        "page": 6
+      },
+      {
+        "master": "News-World-R",
+        "page": 7
+      },
+      {
+        "master": "Feat-Base-S",
+        "page": 8
+      },
+      {
+        "master": "A-Blank",
+        "page": 10
+      },
+      {
+        "master": "Feat-Base-R",
+        "page": 11
+      },
+      {
+        "master": "Cult-Base-S",
+        "page": 12
+      },
+      {
+        "master": "Cult-Ents-L",
+        "page": 14
+      },
+      {
+        "master": "Feat-Letters-R",
+        "page": 15
+      },
+      {
+        "master": "Sprt-Back",
+        "page": 16
       }
     ]
   }
