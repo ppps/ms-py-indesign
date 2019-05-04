@@ -177,7 +177,7 @@ def set_price(edition_date):
 
     Weekday and weekend editions have a different price
     """
-    weekday_price = '£1'
+    weekday_price = '£1.20'
     weekend_price = '£1.50'
     is_saturday = edition_date.isoweekday() == 6
     price = weekend_price if is_saturday else weekday_price
