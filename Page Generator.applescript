@@ -10,7 +10,7 @@ set python_script to masters_dir & "ms-py-indesign/gen.py"
 set master_file to masters_dir & "2018\\ Master.indd"
 set pages_dir to masters_dir & "Fresh\\ pages/"
 
-tell application "Adobe InDesign CS4.app"
+tell application "Adobe InDesign CC 2019.app"
 	activate
 end tell
 
