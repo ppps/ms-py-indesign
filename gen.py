@@ -74,7 +74,7 @@ def wrap_and_run(script):
     The result of the AppleScript runner is returned
     """
     return run_applescript(f'''
-tell application "Adobe InDesign CS4"
+tell application "Adobe InDesign CC 2019"
   tell the active document
     {script}
   end tell
@@ -228,7 +228,7 @@ def format_file_path(edition_date, page_number, slug,
 def open_master(master_file):
     """Open the master InDesign file for page creation"""
     run_applescript(f'''
-tell application "Adobe InDesign CS4"
+tell application "Adobe InDesign CC 2019"
   open POSIX file "{master_file}"
 end tell
 ''')
@@ -264,7 +264,7 @@ def set_indesign_alerts_status(*, enabled: bool):
     else:
         interaction_level = 'never interact'
     run_applescript(
-        'tell application "Adobe InDesign CS4" to set user interaction level'
+        'tell application "Adobe InDesign CC 2019" to set user interaction level'
         f' of script preferences to {interaction_level}')
 
 
@@ -356,7 +356,7 @@ def prompt_for_list_selection(sequence, prompt, multiple_selections=False):
             '", " is disallowed in sequence items when multiple'
             ' selection is enabled.')
     script = f'''\
-tell application "Adobe InDesign CS4"
+tell application "Adobe InDesign CC 2019"
   choose from list {wrap_seq_for_applescript(sequence)} with prompt "{prompt}"{
     ' with multiple selections allowed'
     if multiple_selections else ''}
@@ -380,7 +380,7 @@ def prompt_for_text_input(message, default=''):
     using sys.exit
     """
     result = run_applescript(f'''\
-tell application "Adobe InDesign CS4"
+tell application "Adobe InDesign CC 2019"
   display dialog "{message}" default answer "{default}"
 end tell
 ''')
